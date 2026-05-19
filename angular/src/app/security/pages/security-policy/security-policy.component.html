@@ -1,0 +1,184 @@
+<div class="security-page">
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header">
+
+            <h3 class="mb-0">
+                Security Policy
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form [formGroup]="form">
+
+                <!-- PASSWORD POLICY -->
+
+                <div class="section-title">
+                    Password Policy
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>
+                            Minimum Length
+                        </label>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            formControlName="requiredLength">
+
+                    </div>
+
+                </div>
+
+                <div class="form-check mb-2">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        formControlName="requireUppercase">
+
+                    <label class="form-check-label">
+                        Require uppercase
+                    </label>
+
+                </div>
+
+                <div class="form-check mb-2">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        formControlName="requireLowercase">
+
+                    <label class="form-check-label">
+                        Require lowercase
+                    </label>
+
+                </div>
+
+                <div class="form-check mb-2">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        formControlName="requireDigit">
+
+                    <label class="form-check-label">
+                        Require number
+                    </label>
+
+                </div>
+
+                <div class="form-check mb-4">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        formControlName="requireNonAlphanumeric">
+
+                    <label class="form-check-label">
+                        Require special character
+                    </label>
+
+                </div>
+
+                <!-- PASSWORD EXPIRATION -->
+
+                <div class="section-title">
+                    Password Expiration
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>
+                            Expiration Days
+                        </label>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            formControlName="passwordExpirationDays">
+
+                    </div>
+
+                </div>
+
+                <div class="form-check mb-4">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        formControlName="forceChangePasswordFirstLogin">
+
+                    <label class="form-check-label">
+                        Force password change on first login
+                    </label>
+
+                </div>
+
+                <!-- LOGIN LOCKOUT -->
+
+                <div class="section-title">
+                    Login Lockout
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>
+                            Max Failed Attempts
+                        </label>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            formControlName="maxFailedAccessAttempts">
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label>
+                            Lockout Minutes
+                        </label>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            formControlName="lockoutMinutes">
+
+                    </div>
+
+                </div>
+
+                <div class="mt-4">
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        [disabled]="saving"
+                        (click)="save()">
+
+                        Save
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,119 @@
+<div class="min-vh-100 d-flex flex-column bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-3">
+        <div class="container">
+
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold fs-3 d-flex align-items-center" routerLink="/">
+                <i class="fas fa-globe-asia me-2 text-primary"></i>
+                KMARJ GIS
+            </a>
+
+            <!-- Mobile Button -->
+            <button class="navbar-toggler" type="button" 
+                    data-bs-toggle="collapse"
+                    data-bs-target="#publicNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+           <!-- Menu -->
+            <div class="collapse navbar-collapse" id="publicNavbar">
+
+                <!-- Left Menu -->
+                <ul class="navbar-nav me-auto ms-4">
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3"
+                        routerLink="/"
+                        routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3"
+                        routerLink="/maps"
+                        routerLinkActive="active">
+                            Maps
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3"
+                        routerLink="/about"
+                        routerLinkActive="active">
+                            About
+                        </a>
+                    </li>
+
+                </ul>
+
+                <!-- Right Menu -->
+                <div class="d-flex align-items-center ms-auto">
+
+                    <ng-container *ngIf="!isLoggedIn">
+
+                        <a class="btn btn-outline-light me-2"
+                        routerLink="/account/login">
+                            Login
+                        </a>
+
+                        <a class="btn btn-primary"
+                        routerLink="/account/register">
+                            Register
+                        </a>
+
+                    </ng-container>
+
+                    <ng-container *ngIf="isLoggedIn">
+
+                        <span class="text-light me-3">
+                            <i class="fas fa-user-circle me-1"></i>
+                            {{ appSession.user.userName }}
+                        </span>
+
+                        <a class="btn btn-outline-warning me-2"
+                        routerLink="/app/home">
+                            Dashboard
+                        </a>
+
+                        <button class="btn btn-danger"
+                                (click)="logout()">
+                            Logout
+                        </button>
+
+                    </ng-container>
+
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow-1">
+        <router-outlet></router-outlet>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-auto border-top border-secondary">
+        <div class="container text-center">
+
+            <h5 class="fw-bold mb-2">
+                KMARJ GIS Platform
+            </h5>
+
+            <p class="text-light mb-1">
+                GIS - Map - Spatial Data Platform
+            </p>
+
+            <small class="text-secondary">
+                © 2026 All rights reserved.
+            </small>
+
+        </div>
+    </footer>
+
+</div>

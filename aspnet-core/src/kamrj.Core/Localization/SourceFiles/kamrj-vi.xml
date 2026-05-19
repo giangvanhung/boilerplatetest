@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="vi">
+  <texts>
+    <text name="HomePage" value="Trang chủ" />
+    <text name="About" value="Giới thiệu" />
+    <text name="WelcomeMessage" value="Chào mừng đến với KMARJ!" />
+    <text name="FormIsNotValidMessage" value="Biểu mẫu không hợp lệ. Vui lòng kiểm tra lại." />
+    <text name="TenantNameCanNotBeEmpty" value="Tên tenant không được để trống" />
+    <text name="InvalidUserNameOrPassword" value="Sai tên đăng nhập hoặc mật khẩu" />
+    <text name="ThereIsNoTenantDefinedWithName{0}" value="Không tồn tại tenant với tên {0}" />
+    <text name="TenantIsNotActive" value="Tenant {0} chưa được kích hoạt." />
+    <text name="UserIsNotActiveAndCanNotLogin" value="Người dùng {0} chưa được kích hoạt và không thể đăng nhập." />
+    <text name="UserEmailIsNotConfirmedAndCanNotLogin" value="Email của bạn chưa được xác nhận. Không thể đăng nhập." />
+    <text name="UserLockedOutMessage" value="Tài khoản đã bị khóa. Vui lòng thử lại sau." />
+    <text name="PleaseEnterLoginInformation" value="Vui lòng nhập tên đăng nhập và mật khẩu" />
+    <text name="TenancyName" value="Tên tenant" />
+    <text name="UserNameOrEmail" value="Tên đăng nhập hoặc email" />
+    <text name="Password" value="Mật khẩu" />
+    <text name="RememberMe" value="Ghi nhớ đăng nhập" />
+    <text name="LogIn" value="Đăng nhập" />
+    <text name="LoginFailed" value="Đăng nhập thất bại!" />
+    <text name="NameSurname" value="Họ và tên" />
+    <text name="UserName" value="Tên đăng nhập" />
+    <text name="Name" value="Tên" />
+    <text name="Surname" value="Họ" />
+    <text name="EmailAddress" value="Địa chỉ email" />
+    <text name="Tenants" value="Danh sách tenant" />
+    <text name="SavedSuccessfully" value="Lưu thành công" />
+    <text name="CreateNewTenant" value="Tạo tenant mới" />
+    <text name="AdminEmailAddress" value="Email quản trị" />
+    <text name="Save" value="Lưu" />
+    <text name="Cancel" value="Hủy" />
+    <text name="TenantName_Regex_Description" value="Tên tenant phải có ít nhất 2 ký tự, bắt đầu bằng chữ cái và chỉ chứa chữ cái, số hoặc dấu gạch ngang." />
+    <text name="DefaultPasswordIs" value="Mật khẩu mặc định là {0}" />
+    <text name="CanBeEmptyToLoginAsHost" value="Có thể để trống để đăng nhập với quyền host." />
+    <text name="Register" value="Đăng ký" />
+    <text name="OrLoginWith" value="Hoặc đăng nhập bằng" />
+    <text name="WaitingForActivationMessage" value="Tài khoản của bạn đang chờ quản trị viên kích hoạt." />
+    <text name="TenantSelection" value="Chọn tenant" />
+    <text name="TenantSelection_Detail" value="Vui lòng chọn một tenant bên dưới." />
+    <text name="Logout" value="Đăng xuất" />
+    <text name="RegisterFormUserNameInvalidMessage" value="Vui lòng không sử dụng email làm tên đăng nhập." />
+    <text name="DatabaseConnectionString" value="Chuỗi kết nối cơ sở dữ liệu" />
+    <text name="Users" value="Người dùng" />
+    <text name="IsActive" value="Đang hoạt động" />
+    <text name="FullName" value="Họ tên đầy đủ" />
+    <text name="CreateNewUser" value="Tạo người dùng mới" />
+    <text name="Yes" value="Có" />
+    <text name="No" value="Không" />
+    <text name="Optional" value="Tùy chọn" />
+    <text name="LeaveEmptyToSwitchToHost" value="Để trống để chuyển sang host" />
+    <text name="CurrentTenant" value="Tenant hiện tại" />
+    <text name="NotSelected" value="Chưa chọn" />
+    <text name="Change" value="Thay đổi" />
+    <text name="ChangeTenant" value="Đổi tenant" />
+    <text name="MultiLevelMenu" value="Menu đa cấp" />
+    <text name="Back" value="Quay lại" />
+    <text name="SuccessfullyRegistered" value="Đăng ký thành công" />
+    <text name="WaitingForEmailActivation" value="Email của bạn cần được kích hoạt" />
+    <text name="Roles" value="Vai trò" />
+    <text name="DisplayName" value="Tên hiển thị" />
+    <text name="Edit" value="Chỉnh sửa" />
+    <text name="Delete" value="Xóa" />
+    <text name="CreateNewRole" value="Tạo vai trò mới" />
+    <text name="RoleName" value="Tên vai trò" />
+    <text name="Actions" value="Thao tác" />
+    <text name="CouldNotCompleteLoginOperation" value="Không thể hoàn tất quá trình đăng nhập. Vui lòng thử lại sau." />
+    <text name="CouldNotValidateExternalUser" value="Không thể xác thực người dùng bên ngoài." />
+    <text name="EditRole" value="Chỉnh sửa vai trò" />
+    <text name="EditTenant" value="Chỉnh sửa tenant" />
+    <text name="EditUser" value="Chỉnh sửa người dùng" />
+    <text name="TenantIdIsNotActive{0}" value="TenantId {0} chưa được kích hoạt" />
+    <text name="UnknownTenantId{0}" value="TenantId {0} không tồn tại" />
+  </texts>
+</localizationDictionary>

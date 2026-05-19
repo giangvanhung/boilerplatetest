@@ -1,0 +1,30 @@
+.security-page {
+
+    padding: 20px;
+
+    .card {
+
+        border: none;
+        border-radius: 10px;
+    }
+
+    .card-header {
+
+        background: #ffffff;
+        border-bottom: 1px solid #ececec;
+    }
+
+    .section-title {
+
+        font-size: 18px;
+        font-weight: 600;
+
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+
+        height: 42px;
+    }
+}
