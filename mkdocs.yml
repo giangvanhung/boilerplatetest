@@ -1,0 +1,40 @@
+site_name: gServer GĐ3 — Tài liệu dự án
+site_description: Tài liệu kế hoạch hoàn thiện Web GIS mới và kiến trúc hệ thống GĐ3
+theme:
+  name: material
+  language: vi
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Chuyển sang giao diện tối
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Chuyển sang giao diện sáng
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+    - toc.integrate
+
+nav:
+  - Tổng quan: index.md
+  - Web GIS:
+      - Kế hoạch hoàn thiện: web-gis/ke-hoach-hoan-thien.md
+  - Kiến trúc hệ thống:
+      - "Slide: Kiến trúc GĐ3 vs GĐ2": architecture/slide-kien-truc-hieu-nang.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format

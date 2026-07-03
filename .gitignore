@@ -7,3 +7,6 @@ bin/
 aspnet-core/src/kamrj.Web.Host/App_Data/Logs/
 aspnet-core/src/kamrj.Web.Mvc/App_Data/Logs/
 aspnet-core/src/kamrj.Migrator/Logs/Logs.txt
+
+# MkDocs build output
+site/
