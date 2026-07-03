@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "a9cad6bd-15c4-45a7-be6a-346f023ef2cc"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -36,6 +39,7 @@
               "src/assets/freeze-ui/freeze-ui.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/admin-lte-css-only/css/adminlte.min.css",
+              "node_modules/maplibre-gl/dist/maplibre-gl.css",
               "src/shared/core.less"
             ],
             "scripts": [

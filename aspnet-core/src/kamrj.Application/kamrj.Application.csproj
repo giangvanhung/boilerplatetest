@@ -12,6 +12,9 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="NetTopologySuite.IO.GeoJSON" Version="4.0.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\kamrj.Core\kamrj.Core.csproj" />
   </ItemGroup>
 </Project>

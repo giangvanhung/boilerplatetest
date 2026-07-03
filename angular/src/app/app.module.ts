@@ -39,6 +39,8 @@ import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
 import { PublicLayoutComponent } from './layout/public-layout/public-layout.component';
+// layers
+import { LayersComponent } from './layers/layers.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { PublicLayoutComponent } from './layout/public-layout/public-layout.comp
     SidebarUserPanelComponent,
     SidebarMenuComponent,
     PublicLayoutComponent,
+    // layers
+    LayersComponent,
   ],
   imports: [
     CommonModule,

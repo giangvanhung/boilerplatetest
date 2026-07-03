@@ -27,7 +27,7 @@ import { ChangePasswordComponent } from './users/change-password/change-password
                         loadChildren: () =>
                             import('./security/security.module')
                                 .then(m => m.SecurityModule)
-                    }
+                    },
                 ]
             }
         ])

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using kamrj.EntityFrameworkCore;
@@ -12,9 +13,10 @@ using kamrj.EntityFrameworkCore;
 namespace kamrj.Migrations
 {
     [DbContext(typeof(kamrjDbContext))]
-    partial class kamrjDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260703041623_Them_Layer_Feature_Style")]
+    partial class Them_Layer_Feature_Style
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

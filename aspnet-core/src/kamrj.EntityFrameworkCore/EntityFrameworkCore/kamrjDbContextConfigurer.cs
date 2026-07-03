@@ -7,7 +7,7 @@ namespace kamrj.EntityFrameworkCore
     {
         public static void Configure(DbContextOptionsBuilder<kamrjDbContext> builder, string connectionString)
         {
-            builder.UseSqlServer(connectionString);
+            builder.UseSqlServer(connectionString, x => x.UseNetTopologySuite());
         }
 
         public static void Configure(DbContextOptionsBuilder<kamrjDbContext> builder, DbConnection connection)

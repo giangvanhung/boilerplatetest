@@ -111,14 +111,6 @@ namespace kamrj.Web.Host.Startup
 
             app.UseAbpRequestLocalization();
 
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapHub<AbpCommonHub>("/signalr");
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
-            });
-
             // Enable middleware to serve generated Swagger as a JSON endpoint
             app.UseSwagger(c => { c.RouteTemplate = "swagger/{documentName}/swagger.json"; });
 
@@ -129,8 +121,15 @@ namespace kamrj.Web.Host.Startup
                 options.SwaggerEndpoint($"/swagger/{_apiVersion}/swagger.json", $"kamrj API {_apiVersion}");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
                     .GetManifestResourceStream("kamrj.Web.Host.wwwroot.swagger.ui.index.html");
-                options.DisplayRequestDuration(); // Controls the display of the request duration (in milliseconds) for "Try it out" requests.  
+                options.DisplayRequestDuration(); // Controls the display of the request duration (in milliseconds) for "Try it out" requests.
             }); // URL: /swagger
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<AbpCommonHub>("/signalr");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
+            });
         }
         
         private void ConfigureSwagger(IServiceCollection services)

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LayersComponent } from '@app/layers/layers.component';
 import { PublicLayoutComponent } from '@app/layout/public-layout/public-layout.component';
 import { HomeComponent } from '@app/public/home/home.component';
+import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 
 const routes: Routes = [
     {
@@ -23,6 +25,12 @@ const routes: Routes = [
         path: 'app',
         loadChildren: () => import('app/app.module').then(m => m.AppModule), // Lazy load account module
         data: { preload: true }
+    },
+    {
+        path: 'layers',
+        component: LayersComponent,
+        canActivate: [AppRouteGuard],
+        data: { permission: 'Pages.Users' }
     }
 ];
 
