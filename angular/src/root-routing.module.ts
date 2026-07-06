@@ -29,7 +29,7 @@ const routes: Routes = [
     {
         path: 'layers',
         component: LayersComponent,
-        canActivate: [AppRouteGuard],
+        // canActivate: [AppRouteGuard],
         data: { permission: 'Pages.Users' }
     }
 ];

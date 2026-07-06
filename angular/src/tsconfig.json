@@ -10,7 +10,10 @@
     "moduleResolution": "node",
     "outDir": "../dist/out-tsc",
     "sourceMap": true,
-    "target": "es2017",
+    "target": "es2020",
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": true,
+    "importsNotUsedAsValues": "error",
     "typeRoots": [
       "../node_modules/@types"
     ],

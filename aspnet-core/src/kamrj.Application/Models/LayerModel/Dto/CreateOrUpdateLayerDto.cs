@@ -1,16 +1,10 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Abp.Application.Services.Dto;
-using Abp.AutoMapper;
-using kamrj.Core.Models;
 using kamrj.Models.StyleModel.Dto;
 using kamrj.Models.FeatureModel.Dto;
 
 namespace kamrj.Models.LayerModel.Dto
 {
-    [AutoMap(typeof(Layer))]
-    public class LayerDto : EntityDto<int>
+    public class CreateOrUpdateLayerDto
     {
         public string Name { get; set; }
         public string Description { get; set; }

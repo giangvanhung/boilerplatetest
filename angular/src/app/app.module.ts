@@ -7,6 +7,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { PopoverModule } from 'ngx-bootstrap/popover';  
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -85,6 +87,8 @@ import { LayersComponent } from './layers/layers.component';
     BsDropdownModule,
     CollapseModule,
     TabsModule,
+    PopoverModule.forRoot(),
+    TooltipModule.forRoot(),
     AppRoutingModule,
     ServiceProxyModule,
     SharedModule,

@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+
 
 import { AppSessionService } from './session/app-session.service';
 import { AppUrlService } from './nav/app-url.service';
@@ -22,7 +24,8 @@ import { EqualValidator } from './directives/equal-validator.directive';
     imports: [
         CommonModule,
         RouterModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        PopoverModule.forRoot()
     ],
     declarations: [
         AbpPaginationControlsComponent,

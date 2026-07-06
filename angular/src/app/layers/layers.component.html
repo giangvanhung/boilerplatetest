@@ -1,5 +1,98 @@
 <!-- layers.component.html -->
-<ul>
-  <li *ngFor="let layer of layers">{{ layer.name }} — {{ layer.description }}</li>
-</ul>
-<div id="map" style="width: 100%; height: 500px;"></div>
+<div style="padding: 15px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: flex-start;">
+  <button [popover]="createLayerForm"
+  placement="bottom"
+  [outsideClick]="true"
+  triggers="click" class="btn btn-primary" style="padding: 5px 10px;">
+    Create Layer
+  </button>
+  <button (click)="loadLayers()" class="btn btn-secondary" style="padding: 5px 10px; margin-left: 10px;">Load Layer</button>
+</div>
+<div style="padding: 15px; display: flex; flex-direction: row; gap: 15px;">
+  <div style="flex: 1; border: 1px solid #000000; padding: 10px; overflow-y: auto; max-height: 1000px; width: 15%;">
+    <ul>
+      <li style="list-style: none;" (click)="Fly(layer)" *ngFor="let layer of layers">{{ layer.name }}</li>
+    </ul>
+  </div>
+  <div *ngIf="selectedLayer" style="padding: 15px; max-width: 400px; width: 15%; border: 1px solid #000000; overflow-y: auto; max-height: 1000px;">
+    <h3>{{ selectedLayer?.name }}</h3>
+    <p><strong>Description:</strong> {{ selectedLayer?.description }}</p>
+    <div style="padding: 15px; max-width: 400px;">
+      <h3>Layer Details</h3>
+      <p><strong>Name:</strong> {{ selectedLayer?.name }}</p>
+      <p><strong>Description:</strong> {{ selectedLayer?.description }}</p>
+      <p><strong>Styles:</strong></p>
+      <ul>
+        <li *ngFor="let style of selectedLayer?.styles">{{ style.name }} - {{ style.styleJson }}</li>
+      </ul>
+      <ul>
+        <li *ngFor="let feature of selectedLayer?.features">{{ feature.geometry | json }} - {{ feature.properties || 'Unnamed Feature' }}</li>
+      </ul>
+    </div>
+  </div>
+  <div id="map" style="width: 70%; height: 1000px; border: 1px solid #ff0000; padding: 10px;"></div>
+</div>
+
+<!-- ng-template -->
+<ng-template #createLayerForm>
+  <form #layerForm="ngForm" (ngSubmit)="onCreateLayer()">
+    <div style="padding: 15px; max-width: 500px; overflow-y: auto; max-height: 1000px;">
+      <h3>Create Layer</h3>
+      
+      <!-- Layer info -->
+      <div style="margin-bottom: 10px;">
+        <label>Layer Name:</label>
+        <input type="text" name="name" [(ngModel)]="newLayer.name" required style="width: 100%; padding: 5px;">
+      </div>
+      
+      <div style="margin-bottom: 10px;">
+        <label>Description:</label>
+        <textarea name="description" [(ngModel)]="newLayer.description" style="width: 100%; padding: 5px; height: 60px;"></textarea>
+      </div>
+
+      <!-- Style -->
+      <div style="margin-bottom: 10px; border: 1px solid #ddd; padding: 10px;">
+        <h4>Style</h4>
+        <div style="margin-bottom: 8px;">
+          <label>Style Name:</label>
+          <input type="text" name="styleName" [(ngModel)]="newStyle.name" style="width: 100%; padding: 5px;">
+        </div>
+        <div style="margin-bottom: 8px;">
+          <label>Style JSON:</label>
+          <textarea name="styleJson" [(ngModel)]="newStyle.styleJson" placeholder='{"color":"red"}' style="width: 100%; padding: 5px; height: 80px;"></textarea>
+        </div>
+        <button type="button" (click)="addStyle()" style="padding: 5px 10px;">Add Style</button>
+      </div>
+      <div *ngIf="layerStyles.length > 0" style="margin-bottom: 10px; background: #f5f5f5; padding: 10px;">
+        <h5>Styles:</h5>
+        <div *ngFor="let style of layerStyles; let i = index" style="margin-bottom: 5px;">
+          {{ style.name }} - <button type="button" (click)="removeStyle(i)">Remove</button>
+        </div>
+      </div>
+      
+      <!-- feature -->
+      <div>
+        <h4>Feature</h4>
+        <div>
+          <label>Feature Geometry (GeoJSON):</label>
+          <textarea name="geometry" [(ngModel)]="newFeature.geometry" placeholder='{"type":"Point","coordinates":[0,0]}' style="width: 100%; padding: 5px; height: 80px;"></textarea>
+        </div>
+        <div style="margin-bottom: 8px;">
+          <label>Properties:</label>
+          <textarea name="properties" [(ngModel)]="newFeature.properties" placeholder='{"name":"ABC"}' style="width: 100%; padding: 5px; height: 80px;"></textarea>
+        </div>
+        <button type="button" (click)="addProperties()" style="padding: 5px 10px;">Add Feature</button>
+      </div>
+      <div>
+        <h5>Features:</h5>
+        <div *ngFor="let feature of newLayer.features; let i = index" style="margin-bottom: 5px;">
+          {{ feature.geometry || '' }} - {{ feature.properties?.name || 'Unnamed Feature' }} - <button type="button" (click)="removeFeature(i)">Remove</button>
+        </div>
+
+      </div>
+
+      <button type="submit" [disabled]="!layerForm.valid" style="padding: 8px 15px; background: #007bff; color: white; border: none; cursor: pointer;">Create</button>
+      <button type="button" (click)="resetForm()" style="padding: 8px 15px; margin-left: 5px;">Reset</button>
+    </div>
+  </form>
+</ng-template>

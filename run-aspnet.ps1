@@ -5,6 +5,7 @@
 
 $ErrorActionPreference = "Stop"
 
+$originalLocation = Get-Location
 $hostDir     = Join-Path $PSScriptRoot "aspnet-core\src\kamrj.Web.Host"
 $hostProject = Join-Path $hostDir "kamrj.Web.Host.csproj"
 
@@ -15,9 +16,14 @@ if (-not (Test-Path $hostProject)) {
 
 Write-Host "Starting kamrj.Web.Host (Debug) ..." -ForegroundColor Cyan
 Set-Location $hostDir
-dotnet run --project $hostProject --configuration Debug
 
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "Web.Host exited with code $LASTEXITCODE"
-    exit $LASTEXITCODE
+try {
+    & dotnet run --configuration Debug
+} catch {
+    Write-Host "Script interrupted" -ForegroundColor Yellow
+} finally {
+    Write-Host "Returning to original location..." -ForegroundColor Gray
+    Set-Location $originalLocation
 }
+
+Write-Host "Web.Host stopped" -ForegroundColor Cyan
