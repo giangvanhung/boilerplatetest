@@ -28,7 +28,7 @@
               #nameEl
             />
             <abp-validation-summary
-              [control]="nameModel"
+              [control]="nameModel.control!"
               [controlEl]="nameEl"
             ></abp-validation-summary>
           </div>
@@ -50,7 +50,7 @@
               #surnameEl
             />
             <abp-validation-summary
-              [control]="surnameModel"
+              [control]="surnameModel.control!"
               [controlEl]="surnameEl"
             ></abp-validation-summary>
           </div>
@@ -73,7 +73,7 @@
               #userNameEl
             />
             <abp-validation-summary
-              [control]="userNameModel"
+              [control]="userNameModel.control!"
               [controlEl]="userNameEl"
             ></abp-validation-summary>
           </div>
@@ -96,7 +96,7 @@
               #emailAddressEl
             />
             <abp-validation-summary
-              [control]="emailAddressModel"
+              [control]="emailAddressModel.control!"
               [controlEl]="emailAddressEl"
             ></abp-validation-summary>
           </div>
@@ -128,7 +128,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   [id]="'role_' + i"
-                  [checked]="isRoleChecked(role.normalizedName)"
+                  [checked]="isRoleChecked(role.normalizedName!)"
                   (change)="onRoleChange(role, $event)"
                 />
                 <label class="custom-control-label" [for]="'role_' + i">

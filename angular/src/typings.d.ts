@@ -8,6 +8,7 @@
 
 declare var System: any;
 declare var Push: any;
+declare module '*.css';
 
 declare namespace abp {
   namespace ui {

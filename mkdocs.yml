@@ -1,5 +1,5 @@
 site_name: gServer GĐ3 — Tài liệu dự án
-site_description: Tài liệu kế hoạch hoàn thiện Web GIS mới và kiến trúc hệ thống GĐ3
+site_description: Tài liệu nền tảng (MapLibre/Mapbox, ASP.NET Boilerplate) và kiến trúc hệ thống GĐ3
 theme:
   name: material
   language: vi
@@ -22,6 +22,12 @@ theme:
 
 nav:
   - Tổng quan: index.md
+  - Bản đồ (MapLibre/Mapbox):
+      - MapLibre / Mapbox là gì?: maplibre/gioi-thieu.md
+      - Cần học & cần quan tâm gì?: maplibre/lo-trinh-hoc.md
+  - ASP.NET Boilerplate:
+      - ASP.NET Boilerplate là gì?: abp/gioi-thieu.md
+      - Cần học & cần biết gì?: abp/lo-trinh-hoc.md
   - Web GIS:
       - Kế hoạch hoàn thiện: web-gis/ke-hoach-hoan-thien.md
   - Kiến trúc hệ thống:
@@ -29,10 +35,15 @@ nav:
 
 markdown_extensions:
   - admonition
+  - attr_list
   - tables
   - toc:
       permalink: true
+  - pymdownx.details
   - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

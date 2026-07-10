@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
-import { TokenService, LogService, UtilsService } from 'abp-ng2-module';
 import { AppConsts } from '@shared/AppConsts';
 import { UrlHelper } from '@shared/helpers/UrlHelper';
 import {
@@ -9,6 +8,8 @@ import {
     AuthenticateResultModel,
     TokenAuthServiceProxy,
 } from '@shared/service-proxies/service-proxies';
+
+declare const abp: any;
 
 @Injectable()
 export class AppAuthService {
@@ -18,10 +19,7 @@ export class AppAuthService {
 
     constructor(
         private _tokenAuthService: TokenAuthServiceProxy,
-        private _router: Router,
-        private _utilsService: UtilsService,
-        private _tokenService: TokenService,
-        private _logService: LogService
+        private _router: Router
     ) {
         this.clear();
     }
@@ -65,8 +63,7 @@ export class AppAuthService {
             );
         } else {
             // Unexpected result!
-
-            this._logService.warn('Unexpected authenticateResult!');
+            console.warn('Unexpected authenticateResult!');
             this._router.navigate(['account/login']);
         }
     }
@@ -81,9 +78,9 @@ export class AppAuthService {
             ? new Date(new Date().getTime() + 1000 * expireInSeconds)
             : undefined;
 
-        this._tokenService.setToken(accessToken, tokenExpireDate);
+        abp.auth.setToken(accessToken, tokenExpireDate);
 
-        this._utilsService.setCookieValue(
+        abp.utils.setCookie(
             AppConsts.authorization.encryptedAuthTokenName,
             encryptedAccessToken,
             tokenExpireDate,

@@ -216,6 +216,69 @@ export class FeatureServiceProxy {
     }
 
     /**
+     * @param layerId (optional) 
+     * @return Success
+     */
+    getFeatureByLayerId(layerId: number | undefined): Observable<FeatureDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Feature/GetFeatureByLayerId?";
+        if (layerId === null)
+            throw new globalThis.Error("The parameter 'layerId' cannot be null.");
+        else if (layerId !== undefined)
+            url_ += "layerId=" + encodeURIComponent("" + layerId) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetFeatureByLayerId(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetFeatureByLayerId(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<FeatureDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<FeatureDto[]>;
+        }));
+    }
+
+    protected processGetFeatureByLayerId(response: HttpResponseBase): Observable<FeatureDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(FeatureDto.fromJS(item));
+            }
+            else {
+                result200 = null as any;
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<FeatureDto[]>(null as any);
+    }
+
+    /**
      * @param id (optional) 
      * @return Success
      */
@@ -4858,7 +4921,7 @@ export interface IUserLoginInfoDto {
 }
 
 export class ApiException extends Error {
-    override message: string;
+    message: string;
     status: number;
     response: string;
     headers: { [key: string]: any; };

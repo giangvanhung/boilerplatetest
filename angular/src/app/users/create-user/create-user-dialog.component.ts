@@ -22,20 +22,22 @@ export class CreateUserDialogComponent extends AppComponentBase
   implements OnInit {
   saving = false;
   user = new CreateUserDto();
-  roles: RoleDto[] = [];
+  roles: RoleDto[] | undefined = [] ;
   checkedRolesMap: { [key: string]: boolean } = {};
   defaultRoleCheckedStatus = false;
-  passwordValidationErrors: Partial<AbpValidationError>[] = [
+  passwordValidationErrors: AbpValidationError[] = [
     {
       name: 'pattern',
       localizationKey:
         'PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber',
+      propertyKey: 'Password'
     },
   ];
-  confirmPasswordValidationErrors: Partial<AbpValidationError>[] = [
+  confirmPasswordValidationErrors: AbpValidationError[] = [
     {
       name: 'validateEqual',
       localizationKey: 'PasswordsDoNotMatch',
+      propertyKey: 'ConfirmPassword'
     },
   ];
 
@@ -60,8 +62,8 @@ export class CreateUserDialogComponent extends AppComponentBase
 
   setInitialRolesStatus(): void {
     _map(this.roles, (item) => {
-      this.checkedRolesMap[item.normalizedName] = this.isRoleChecked(
-        item.normalizedName
+      this.checkedRolesMap[item.normalizedName as any] = this.isRoleChecked(
+        item.normalizedName as any
       );
     });
   }
@@ -73,7 +75,7 @@ export class CreateUserDialogComponent extends AppComponentBase
   }
 
   onRoleChange(role: RoleDto, $event) {
-    this.checkedRolesMap[role.normalizedName] = $event.target.checked;
+    this.checkedRolesMap[role.normalizedName as any] = $event.target.checked;
   }
 
   getCheckedRoles(): string[] {

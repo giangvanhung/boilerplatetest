@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { PermissionCheckerService } from 'abp-ng2-module';
 import { AppSessionService } from '../session/app-session.service';
 
 import {
@@ -9,11 +8,12 @@ import {
     CanActivateChild
 } from '@angular/router';
 
+declare const abp: any;
+
 @Injectable()
 export class AppRouteGuard implements CanActivate, CanActivateChild {
 
     constructor(
-        private _permissionChecker: PermissionCheckerService,
         private _router: Router,
         private _sessionService: AppSessionService,
     ) { }
@@ -28,7 +28,7 @@ export class AppRouteGuard implements CanActivate, CanActivateChild {
             return true;
         }
 
-        if (this._permissionChecker.isGranted(route.data['permission'])) {
+        if (abp.auth.isGranted(route.data['permission'])) {
             return true;
         }
 
@@ -45,7 +45,7 @@ export class AppRouteGuard implements CanActivate, CanActivateChild {
             return '/account/login';
         }
 
-        if (this._permissionChecker.isGranted('Pages.Users')) {
+        if (abp.auth.isGranted('Pages.Users')) {
             return '/app/admin/users';
         }
 

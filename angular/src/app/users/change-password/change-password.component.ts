@@ -16,17 +16,19 @@ import { AbpValidationError } from '@shared/components/validation/abp-validation
 export class ChangePasswordComponent extends AppComponentBase {
   saving = false;
   changePasswordDto = new ChangePasswordDto();
-  newPasswordValidationErrors: Partial<AbpValidationError>[] = [
+  newPasswordValidationErrors: AbpValidationError[] = [
     {
       name: 'pattern',
       localizationKey:
         'PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber',
+      propertyKey: 'NewPassword'
     },
   ];
-  confirmNewPasswordValidationErrors: Partial<AbpValidationError>[] = [
+  confirmNewPasswordValidationErrors: AbpValidationError[] = [
     {
       name: 'validateEqual',
       localizationKey: 'PasswordsDoNotMatch',
+      propertyKey: 'ConfirmNewPassword'
     },
   ];
 

@@ -23,10 +23,10 @@ import {
 export class EditRoleDialogComponent extends AppComponentBase
   implements OnInit {
   saving = false;
-  id: number;
+  id!: number;
   role = new RoleEditDto();
-  permissions: FlatPermissionDto[];
-  grantedPermissionNames: string[];
+  permissions!: FlatPermissionDto[];
+  grantedPermissionNames!: string[];
   checkedPermissionsMap: { [key: string]: boolean } = {};
 
   @Output() onSave = new EventEmitter<any>();
@@ -44,16 +44,16 @@ export class EditRoleDialogComponent extends AppComponentBase
       .getRoleForEdit(this.id)
       .subscribe((result: GetRoleForEditOutput) => {
         this.role = result.role;
-        this.permissions = result.permissions;
-        this.grantedPermissionNames = result.grantedPermissionNames;
+        this.permissions = result.permissions as FlatPermissionDto[];
+        this.grantedPermissionNames = result.grantedPermissionNames as string[];
         this.setInitialPermissionsStatus();
       });
   }
 
   setInitialPermissionsStatus(): void {
     _map(this.permissions, (item) => {
-      this.checkedPermissionsMap[item.name] = this.isPermissionChecked(
-        item.name
+      this.checkedPermissionsMap[item.name!] = this.isPermissionChecked(
+        item.name!
       );
     });
   }
@@ -63,7 +63,7 @@ export class EditRoleDialogComponent extends AppComponentBase
   }
 
   onPermissionChange(permission: PermissionDto, $event) {
-    this.checkedPermissionsMap[permission.name] = $event.target.checked;
+    this.checkedPermissionsMap[permission.name!] = $event.target.checked;
   }
 
   getCheckedPermissions(): string[] {

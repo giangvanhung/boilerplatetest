@@ -18,7 +18,7 @@ export class LayoutStoreService {
 
   get sidebarExpanded(): Observable<boolean> {
     return this.config$.pipe(
-      pluck('sidebarExpanded'),
+      pluck('sidebarExpanded') as any,
       distinctUntilChanged()
     ) as Observable<boolean>;
   }

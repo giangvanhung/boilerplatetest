@@ -28,7 +28,7 @@
               #nameEl
             />
             <abp-validation-summary
-              [control]="nameModel"
+              [control]="nameModel.control!"
               [controlEl]="nameEl"
             ></abp-validation-summary>
           </div>
@@ -50,7 +50,7 @@
               #surnameEl
             />
             <abp-validation-summary
-              [control]="surnameModel"
+              [control]="surnameModel.control!"
               [controlEl]="surnameEl"
             ></abp-validation-summary>
           </div>
@@ -73,7 +73,7 @@
               #userNameEl
             />
             <abp-validation-summary
-              [control]="userNameModel"
+              [control]="userNameModel.control!"
               [controlEl]="userNameEl"
             ></abp-validation-summary>
           </div>
@@ -95,10 +95,10 @@
               pattern="(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)[0-9a-zA-Z!@#$%^&*()]*$"
               [(ngModel)]="user.password"
               #passwordModel="ngModel"
-              #passwordEl
+              #passwordEl 
             />
             <abp-validation-summary
-              [control]="passwordModel"
+              [control]="passwordModel.control!"
               [controlEl]="passwordEl"
               [customValidationErrors]="passwordValidationErrors"
             ></abp-validation-summary>
@@ -123,7 +123,7 @@
               #confirmPasswordEl
             />
             <abp-validation-summary
-              [control]="confirmPasswordModel"
+              [control]="confirmPasswordModel.control!"
               [controlEl]="confirmPasswordEl"
               [customValidationErrors]="confirmPasswordValidationErrors"
             ></abp-validation-summary>
@@ -147,7 +147,7 @@
               #emailAddressEl
             />
             <abp-validation-summary
-              [control]="emailAddressModel"
+              [control]="emailAddressModel.control!"
               [controlEl]="emailAddressEl"
             ></abp-validation-summary>
           </div>
@@ -179,7 +179,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   [id]="'role_' + i"
-                  [checked]="isRoleChecked(role.normalizedName)"
+                  [checked]="isRoleChecked(role.normalizedName!)"
                   (change)="onRoleChange(role, $event)"
                 />
                 <label class="custom-control-label" [for]="'role_' + i">

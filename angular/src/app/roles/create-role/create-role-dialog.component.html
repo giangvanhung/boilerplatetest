@@ -29,7 +29,7 @@
               #nameEl
             />
             <abp-validation-summary
-              [control]="nameModel"
+              [control]="nameModel.control!"
               [controlEl]="nameEl"
             ></abp-validation-summary>
           </div>
@@ -52,7 +52,7 @@
               #displayNameEl
             />
             <abp-validation-summary
-              [control]="displayNameModel"
+              [control]="displayNameModel.control!"
               [controlEl]="displayNameEl"
             ></abp-validation-summary>
           </div>
@@ -82,7 +82,7 @@
                   type="checkbox"
                   class="custom-control-input"
                   [id]="'permission_' + i"
-                  [checked]="isPermissionChecked(permission.name)"
+                  [checked]="isPermissionChecked(permission.name!)"
                   (change)="onPermissionChange(permission, $event)"
                 />
                 <label class="custom-control-label" [for]="'permission_' + i">
